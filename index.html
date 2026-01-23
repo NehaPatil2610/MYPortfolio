@@ -1,605 +1,211 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neha Patil | Software Developer</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
-      :root {
-        --bg: #02000d;
-        --accent: #00d2ff;
-        --accent-alt: #9d50bb;
-        --card-bg: rgba(255, 255, 255, 0.03);
-        --border: rgba(255, 255, 255, 0.08);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        background: var(--bg);
-        color: #fff;
-        font-family: "Outfit", sans-serif;
-        overflow-x: hidden;
-        line-height: 1.6;
-        scroll-behavior: smooth;
-      }
-
-      /* Background Spotlight */
-      #spotlight {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(
-          circle at var(--x, 50%) var(--y, 50%),
-          rgba(0, 210, 255, 0.07) 0%,
-          transparent 50%
-        );
-        z-index: -1;
-        pointer-events: none;
-      }
-
-      /* TOP NAVIGATION */
-      .top-nav {
-        position: fixed;
-        top: 25px;
-        right: 40px;
-        z-index: 1000;
-        display: flex;
-        gap: 12px;
-      }
-      .nav-link {
-        padding: 10px 22px;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        text-decoration: none;
-        font-weight: 600;
-        transition: 0.4s;
-        border: 1px solid var(--border);
-        color: #fff;
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(15px);
-        font-family: "JetBrains Mono", monospace;
-      }
-      .nav-link:hover {
-        background: var(--accent);
-        color: #000;
-        border-color: var(--accent);
-        box-shadow: 0 0 20px var(--accent);
-        transform: translateY(-3px);
-      }
-
-      .container {
-        display: flex;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      /* SIDEBAR */
-      .sidebar {
-        width: 35%;
-        height: 100vh;
-        position: sticky;
-        top: 0;
-        padding: 60px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      .name-animate {
-        font-size: 4rem;
-        font-weight: 600;
-        background: linear-gradient(
-          to right,
-          #fff,
-          var(--accent),
-          var(--accent-alt),
-          #fff
-        );
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: shine 5s linear infinite;
-      }
-      @keyframes shine {
-        to {
-          background-position: 200% center;
+        :root { 
+            --bg: #02000d; 
+            --accent: #00d2ff; 
+            --accent-alt: #9d50bb;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
         }
-      }
-      .role {
-        color: var(--accent);
-        font-family: "JetBrains Mono";
-        margin-bottom: 25px;
-        letter-spacing: 3px;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-      }
-      .about-text {
-        color: #aaa;
-        font-size: 1.05rem;
-      }
-      .highlight {
-        color: #fff;
-        font-weight: 500;
-      }
-      .motive {
-        display: block;
-        margin-top: 15px;
-        border-left: 2px solid var(--accent);
-        padding-left: 15px;
-        font-style: italic;
-        color: #888;
-      }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: #fff; font-family: 'Outfit', sans-serif; overflow-x: hidden; line-height: 1.6; scroll-behavior: smooth; }
 
-      .social-btns {
-        display: flex;
-        gap: 15px;
-        margin-top: 30px;
-      }
-      .btn {
-        padding: 14px 32px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: 0.4s;
-        cursor: pointer;
-        border: none;
-        font-size: 0.9rem;
-      }
-      .primary {
-        background: #fff;
-        color: #000;
-      }
-      .secondary {
-        border: 1px solid var(--border);
-        color: #fff;
-        background: var(--card-bg);
-        backdrop-filter: blur(10px);
-      }
+        /* Background Spotlight */
+        #spotlight { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 210, 255, 0.07) 0%, transparent 50%); z-index: -1; pointer-events: none; }
 
-      /* CONTENT */
-      .content {
-        width: 65%;
-        padding: 120px 60px;
-      }
+        /* TOP NAVIGATION */
+        .top-nav { position: fixed; top: 25px; right: 40px; z-index: 1000; display: flex; gap: 12px; }
+        .nav-link { padding: 10px 22px; border-radius: 50px; font-size: 0.8rem; text-decoration: none; font-weight: 600; transition: 0.4s; border: 1px solid var(--border); color: #fff; background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); font-family: 'JetBrains Mono', monospace; }
+        .nav-link:hover { background: var(--accent); color: #000; border-color: var(--accent); box-shadow: 0 0 20px var(--accent); transform: translateY(-3px); }
 
-      /* CYBER HEADINGS */
-      .cyber-header {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        margin-bottom: 50px;
-        font-family: "JetBrains Mono", monospace;
-      }
-      .cyber-header h3 {
-        font-size: 0.85rem;
-        color: var(--accent);
-        text-transform: uppercase;
-        letter-spacing: 5px;
-        margin: 0;
-        position: relative;
-      }
-      .cyber-header .line {
-        height: 1px;
-        flex-grow: 1;
-        background: linear-gradient(to right, var(--accent), transparent);
-        position: relative;
-      }
-      .cyber-header .line::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: -2px;
-        width: 5px;
-        height: 5px;
-        background: var(--accent);
-        box-shadow: 0 0 10px var(--accent);
-      }
-      .cyber-header .status-dot {
-        width: 8px;
-        height: 8px;
-        background: var(--accent);
-        border-radius: 2px;
-        animation: pulse 1.5s infinite;
-      }
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-          transform: scale(1);
+        .container { display: flex; max-width: 1400px; margin: 0 auto; }
+        
+        /* SIDEBAR */
+        .sidebar { width: 35%; height: 100vh; position: sticky; top: 0; padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+        .name-animate { font-size: 4rem; font-weight: 600; background: linear-gradient(to right, #fff, var(--accent), var(--accent-alt), #fff); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 5s linear infinite; }
+        @keyframes shine { to { background-position: 200% center; } }
+        .role { color: var(--accent); font-family: 'JetBrains Mono'; margin-bottom: 25px; letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; }
+        .about-text { color: #aaa; font-size: 1.05rem; }
+        .highlight { color: #fff; font-weight: 500; }
+        .motive { display: block; margin-top: 15px; border-left: 2px solid var(--accent); padding-left: 15px; font-style: italic; color: #888; }
+        
+        .social-btns { display: flex; gap: 15px; margin-top: 30px; }
+        .btn { padding: 14px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.4s; cursor: pointer; border: none; font-size: 0.9rem; }
+        .primary { background: #fff; color: #000; }
+        .secondary { border: 1px solid var(--border); color: #fff; background: var(--card-bg); backdrop-filter: blur(10px); }
+
+        /* CONTENT */
+        .content { width: 65%; padding: 120px 60px; }
+
+        /* CYBER HEADINGS */
+        .cyber-header { display: flex; align-items: center; gap: 15px; margin-bottom: 50px; font-family: 'JetBrains Mono', monospace; }
+        .cyber-header h3 { font-size: 0.85rem; color: var(--accent); text-transform: uppercase; letter-spacing: 5px; margin: 0; position: relative; }
+        .cyber-header .line { height: 1px; flex-grow: 1; background: linear-gradient(to right, var(--accent), transparent); position: relative; }
+        .cyber-header .line::before { content: ''; position: absolute; left: 0; top: -2px; width: 5px; height: 5px; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+        .cyber-header .status-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 2px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.8); } }
+
+        /* CARDS */
+        .glow-card { background: var(--card-bg); border: 1px solid var(--border); padding: 40px; border-radius: 20px; margin-bottom: 40px; transition: 0.4s; backdrop-filter: blur(10px); }
+        .glow-card:hover { border-color: var(--accent); box-shadow: 0 0 30px rgba(0, 210, 255, 0.1); transform: translateY(-5px); }
+        .tag { font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--accent); background: rgba(0, 210, 255, 0.05); border: 1px solid rgba(0, 210, 255, 0.3); padding: 5px 15px; border-radius: 50px; margin-right: 8px; display: inline-block; margin-top: 15px; transition: 0.3s; }
+        .tag:hover { background: var(--accent); color: #000; }
+
+        /* EDUCATION */
+        .edu-flex { display: flex; flex-direction: column; gap: 20px; }
+        .edu-item { background: rgba(255, 255, 255, 0.02); padding: 25px 35px; border-radius: 15px; border-left: 4px solid var(--accent); transition: 0.3s; }
+
+        /* CONSOLE */
+        .console { background: #000; border: 1px solid var(--border); padding: 35px; border-radius: 20px; font-family: 'JetBrains Mono'; }
+        .console input { background: transparent; border: none; color: #fff; outline: none; width: 60%; font-family: inherit; font-size: 1rem; }
+
+        /* REVEAL ON SCROLL */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* THANK YOU FOOTER */
+        .thank-you { text-align: center; margin-top: 100px; padding-bottom: 40px; }
+        .thank-you p { color: #888; font-style: italic; margin-bottom: 20px; }
+        .back-top-btn { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 8px 20px; border-radius: 5px; cursor: pointer; font-family: 'JetBrains Mono'; font-size: 0.7rem; transition: 0.3s; }
+
+        /* MOBILE FIX FOR STICKY ISSUE */
+        @media (max-width: 1000px) { 
+            .container { flex-direction: column; } 
+            .sidebar { 
+                width: 100%; 
+                height: auto; 
+                position: relative; /* Removes sticky on mobile */
+                padding: 60px 25px; 
+                text-align: center;
+                top: auto;
+            } 
+            .content { width: 100%; padding: 40px 20px; } 
+            .top-nav { position: absolute; top: 20px; right: 20px; }
+            .name-animate { font-size: 2.5rem; }
+            .social-btns { justify-content: center; }
         }
-        50% {
-          opacity: 0.3;
-          transform: scale(0.8);
-        }
-      }
-
-      /* CARDS */
-      .glow-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        padding: 40px;
-        border-radius: 20px;
-        margin-bottom: 40px;
-        transition: 0.4s;
-        backdrop-filter: blur(10px);
-      }
-      .glow-card:hover {
-        border-color: var(--accent);
-        box-shadow: 0 0 30px rgba(0, 210, 255, 0.1);
-        transform: translateY(-5px);
-      }
-      .tag {
-        font-family: "JetBrains Mono";
-        font-size: 0.7rem;
-        color: var(--accent);
-        background: rgba(0, 210, 255, 0.05);
-        border: 1px solid rgba(0, 210, 255, 0.3);
-        padding: 5px 15px;
-        border-radius: 50px;
-        margin-right: 8px;
-        display: inline-block;
-        margin-top: 15px;
-        transition: 0.3s;
-      }
-      .tag:hover {
-        background: var(--accent);
-        color: #000;
-      }
-
-      /* EDUCATION */
-      .edu-flex {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-      .edu-item {
-        background: rgba(255, 255, 255, 0.02);
-        padding: 25px 35px;
-        border-radius: 15px;
-        border-left: 4px solid var(--accent);
-        transition: 0.3s;
-      }
-
-      /* CONSOLE */
-      .console {
-        background: #000;
-        border: 1px solid var(--border);
-        padding: 35px;
-        border-radius: 20px;
-        font-family: "JetBrains Mono";
-      }
-      .console input {
-        background: transparent;
-        border: none;
-        color: #fff;
-        outline: none;
-        width: 60%;
-        font-family: inherit;
-        font-size: 1rem;
-      }
-
-      /* THANK YOU FOOTER */
-      .thank-you {
-        text-align: center;
-        margin-top: 100px;
-        padding-bottom: 40px;
-      }
-      .thank-you p {
-        color: #888;
-        font-style: italic;
-        margin-bottom: 20px;
-      }
-      .back-top-btn {
-        background: none;
-        border: 1px solid var(--accent);
-        color: var(--accent);
-        padding: 8px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-family: "JetBrains Mono";
-        font-size: 0.7rem;
-        transition: 0.3s;
-      }
-      .back-top-btn:hover {
-        background: var(--accent);
-        color: #000;
-        box-shadow: 0 0 15px var(--accent);
-      }
-
-      /* REVEAL ON SCROLL */
-      .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: 0.8s ease-out;
-      }
-      .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      @media (max-width: 1000px) {
-        .container {
-          flex-direction: column;
-        }
-        .sidebar,
-        .content {
-          width: 100%;
-          height: auto;
-          padding: 40px 25px;
-        }
-        .top-nav {
-          position: static;
-          padding: 20px;
-          justify-content: center;
-        }
-      }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
     <div id="spotlight"></div>
 
     <nav class="top-nav">
-      <a href="https://github.com/nehapatil" target="_blank" class="nav-link"
-        >GitHub</a
-      >
-      <a
-        href="https://linkedin.com/in/nehapatil"
-        target="_blank"
-        class="nav-link"
-        >LinkedIn</a
-      >
+        <a href="https://github.com/NehaPatil2610" target="_blank" class="nav-link">GitHub</a>
+        <a href="https://linkedin.com/in/nehapatil" target="_blank" class="nav-link">LinkedIn</a>
     </nav>
 
     <div class="container">
-      <aside class="sidebar">
-        <h1 class="name-animate">Neha Patil</h1>
-        <div class="role">Software Developer</div>
-        <p class="about-text">
-          I’m a passionate
-          <span class="highlight">Software Developer</span> focused on building
-          clean, efficient, and user-friendly applications. I enjoy solving
-          real-world problems through code and continuously improving my skills.
-          <span class="motive"
-            >Consistency, curiosity, and learning drive everything I
-            build.</span
-          >
-        </p>
-
-        <div
-          class="social-btns"
-          style="
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 30px;
-          "
-        >
-          <a
-            href="mailto:nehapatil26102002@gmail.com"
-            class="btn primary"
-            style="text-align: center; width: 100%"
-            >Email Me</a
-          >
-          <div style="display: flex; gap: 10px; width: 100%">
-            <a
-              href="nehaResume1.pdf"
-              target="_blank"
-              class="btn secondary"
-              style="
-                flex: 1;
-                text-align: center;
-                padding: 14px 0;
-                font-size: 0.8rem;
-              "
-              >View CV</a
-            >
-            <a
-              href="nehaResume1.pdf"
-              download="Neha_Patil_Resume"
-              class="btn secondary"
-              style="
-                flex: 1;
-                text-align: center;
-                padding: 14px 0;
-                font-size: 0.8rem;
-              "
-              >Download</a
-            >
-          </div>
-        </div>
-      </aside>
-
-      <main class="content">
-        <section id="projects">
-          <div class="cyber-header">
-            <div class="status-dot"></div>
-            <h3>Deployed_Projects</h3>
-            <div class="line"></div>
-          </div>
-
-          <div class="glow-card reveal">
-            <div
-              style="
-                color: var(--accent);
-                font-family: &quot;JetBrains Mono&quot;;
-                font-size: 0.7rem;
-                margin-bottom: 5px;
-              "
-            >
-             
-            </div>
-            <h4>Forum Flow</h4>
-            <p style="color: #888">
-              A dynamic student discussion portal designed to bridge
-              communication gaps. Developed a secure environment for real-time
-              exchange and resource sharing.
+        <aside class="sidebar">
+            <h1 class="name-animate">Neha Patil</h1>
+            <div class="role">Software Developer</div>
+            <p class="about-text">
+                I’m a passionate <span class="highlight">Software Developer</span> focused on building clean, efficient, and user-friendly applications. 
+                I enjoy solving real-world problems through code and continuously improving my skills. 
+                <span class="motive">Consistency, curiosity, and learning drive everything I build.</span>
             </p>
-            <p style="color: #666; font-size: 0.9rem; margin-top: 10px">
-              • Integrated
-              <span style="color: #fff">JWT (JSON Web Tokens)</span> for robust
-              authentication and data privacy.<br />• Optimized file processing
-              using <span style="color: #fff">Multer</span> for seamless
-              document uploads.
-            </p>
-            <div class="tech-list">
-              <span class="tag">MERN Stack</span>
-              <span class="tag">JWT Auth</span> <span class="tag">Node.js</span>
+            
+            <div class="social-btns" style="display: flex; flex-direction: column; gap: 12px; margin-top: 30px;">
+                <a href="mailto:nehapatil26102002@gmail.com" class="btn primary" style="text-align: center; width: 100%;">Email Me</a>
+                <div style="display: flex; gap: 10px; width: 100%;">
+                    <a href="nehaResume1.pdf" target="_blank" class="btn secondary" style="flex: 1; text-align: center; padding: 14px 0; font-size: 0.8rem;">View CV</a>
+                    <a href="nehaResume1.pdf" download="Neha_Patil_Resume" class="btn secondary" style="flex: 1; text-align: center; padding: 14px 0; font-size: 0.8rem;">Download</a>
+                </div>
             </div>
-          </div>
+        </aside>
 
-          <div class="glow-card reveal">
-            <div
-              style="
-                color: var(--accent);
-                font-family: &quot;JetBrains Mono&quot;;
-                font-size: 0.7rem;
-                margin-bottom: 5px;
-              "
-            >
-             
-            </div>
-            <h4>FlickFinder</h4>
-            <p style="color: #888">
-              An intuitive movie discovery engine that aggregates global
-              cinematic data. Focuses on speed, responsiveness, and clean UI/UX.
-            </p>
-            <p style="color: #666; font-size: 0.9rem; margin-top: 10px">
-              • Leveraged <span style="color: #fff">TMDB REST API</span> to
-              fetch real-time metadata for thousands of titles.<br />• Built
-              with <span style="color: #fff">React Hooks</span> to ensure
-              ultra-responsive state management and live filtering.
-            </p>
-            <div class="tech-list">
-              <span class="tag">React.js</span>
-              <span class="tag">REST API</span>
-              <span class="tag">Tailwind CSS</span>
-            </div>
-          </div>
-        </section>
+        <main class="content">
+            
+            <section id="projects">
+                <div class="cyber-header">
+                    <div class="status-dot"></div>
+                    <h3>Deployed_Projects</h3>
+                    <div class="line"></div>
+                </div>
+                
+                <div class="glow-card reveal">
+                    <div style="color: var(--accent); font-family: 'JetBrains Mono'; font-size: 0.7rem; margin-bottom: 5px;">// 01. FULL-STACK ECOSYSTEM</div>
+                    <h4>Forum Flow</h4>
+                    <p style="color:#888;">A dynamic student discussion portal. Developed a secure environment for real-time exchange and resource sharing.</p>
+                    <p style="color: #666; font-size: 0.9rem; margin-top: 10px;">• Integrated <span style="color: #fff;">JWT</span> for authentication and <span style="color: #fff;">Multer</span> for file handling.</p>
+                    <div class="tech-list"><span class="tag">MERN Stack</span> <span class="tag">JWT Auth</span> <span class="tag">Node.js</span></div>
+                </div>
 
-        <section id="education" style="margin-top: 80px">
-          <div class="cyber-header">
-            <div class="status-dot"></div>
-            <h3>Academic_Profile</h3>
-            <div class="line"></div>
-          </div>
+                <div class="glow-card reveal">
+                    <div style="color: var(--accent); font-family: 'JetBrains Mono'; font-size: 0.7rem; margin-bottom: 5px;">// 02. API ARCHITECTURE</div>
+                    <h4>FlickFinder</h4>
+                    <p style="color:#888;">Movie discovery engine using TMDB API. Optimized with React Hooks for real-time search.</p>
+                    <p style="color: #666; font-size: 0.9rem; margin-top: 10px;">• Fetched real-time metadata using <span style="color: #fff;">REST API</span> and managed state with <span style="color: #fff;">Hooks</span>.</p>
+                    <div class="tech-list"><span class="tag">React.js</span> <span class="tag">TMDB API</span> <span class="tag">Tailwind CSS</span></div>
+                </div>
+            </section>
 
-          <div class="edu-flex">
-            <div class="edu-item reveal">
-              <h5 style="color: var(--accent); font-size: 1.2rem">
-                Master of Computer Application (MCA)
-              </h5>
-              <p style="font-size: 0.95rem; color: #fff; margin-top: 5px">
-                CGPA: 8.81
-              </p>
-              <p style="font-size: 0.9rem; color: #666">
-                K.B Joshi Institute of IT, Pune
-              </p>
-            </div>
-            <div class="edu-item reveal">
-              <h5 style="color: var(--accent); font-size: 1.2rem">
-                BBA (Computer Application)
-              </h5>
-              <p style="font-size: 0.95rem; color: #fff; margin-top: 5px">
-                CGPA: 7.86
-              </p>
-              <p style="font-size: 0.9rem; color: #666">
-                K.K Wagh Arts, Science & Commerce College, Nashik
-              </p>
-            </div>
-          </div>
-        </section>
+            <section id="education" style="margin-top: 80px;">
+                <div class="cyber-header">
+                    <div class="status-dot"></div>
+                    <h3>Academic_Profile</h3>
+                    <div class="line"></div>
+                </div>
+                
+                <div class="edu-flex">
+                    <div class="edu-item reveal">
+                        <h5 style="color:var(--accent); font-size: 1.2rem;">Master of Computer Application (MCA)</h5>
+                        <p style="font-size:0.95rem; color:#fff; margin-top: 5px;">CGPA: 8.81</p>
+                        <p style="font-size:0.9rem; color:#666;">K.B Joshi Institute of IT</p>
+                    </div>
+                    <div class="edu-item reveal">
+                        <h5 style="color:var(--accent); font-size: 1.2rem;">BBA (Computer Application)</h5>
+                        <p style="font-size:0.95rem; color:#fff; margin-top: 5px;">CGPA: 7.86</p>
+                        <p style="font-size:0.9rem; color:#666;">K.K Wagh Arts, Science & Commerce College</p>
+                    </div>
+                </div>
+            </section>
 
-        <section id="contact" style="margin-top: 100px">
-          <div class="cyber-header">
-            <div class="status-dot"></div>
-            <h3>Direct_Command</h3>
-            <div class="line"></div>
-          </div>
+            <section id="contact" style="margin-top: 100px;">
+                <div class="cyber-header">
+                    <div class="status-dot"></div>
+                    <h3>Coding_Activity</h3>
+                    <div class="line"></div>
+                </div>
+                
+                <div class="console glow-card reveal">
+                    <div style="color: #444; margin-bottom: 10px; font-size: 0.8rem;">// Syncing GitHub activity...</div>
+                    <img src="https://github-readme-stats.vercel.app/api?username=NehaPatil2610&show_icons=true&theme=transparent&text_color=ffffff&icon_color=00d2ff&bg_color=00000000" alt="GitHub Stats" style="width: 100%;">
+                </div>
+            </section>
 
-          <div class="console glow-card reveal">
-            <div style="color: #444; margin-bottom: 10px; font-size: 0.8rem">
-              // Send me a secure signal...
-            </div>
-            <span style="color: var(--accent)">visitor@neha:~$ </span>
-            <input
-              type="text"
-              id="term"
-              placeholder="type hello..."
-              autocomplete="off"
-            />
-            <div
-              id="output"
-              style="margin-top: 10px; font-size: 0.8rem; color: var(--accent)"
-            ></div>
-          </div>
-        </section>
+            <footer class="thank-you reveal">
+                <div class="cyber-header">
+                    <div class="status-dot"></div>
+                    <h3>End_Of_Line</h3>
+                    <div class="line"></div>
+                </div>
+                <p>"Thank you for visiting! Let's build something amazing together."</p>
+                <button class="back-top-btn" onclick="window.scrollTo(0,0)">[ RETURN_TO_START ]</button>
+            </footer>
 
-        <footer class="thank-you reveal">
-          <div class="cyber-header">
-            <div class="status-dot"></div>
-            <h3>End_Of_Line</h3>
-            <div class="line"></div>
-          </div>
-          <p>
-            "Thank you for visiting! I'm always open to discussing new
-            opportunities or creative collaborations. Let's build something
-            amazing together."
-          </p>
-          <button class="back-top-btn" onclick="window.scrollTo(0, 0)">
-            [ RETURN_TO_START ]
-          </button>
-          <div
-            style="
-              margin-top: 30px;
-              opacity: 0.2;
-              font-size: 0.6rem;
-              font-family: &quot;JetBrains Mono&quot;;
-            "
-          >
-            NEHA PATIL // 2026 // ALL_RIGHTS_RESERVED
-          </div>
-        </footer>
-      </main>
+        </main>
     </div>
 
     <script>
-      document.addEventListener("mousemove", (e) => {
-        document
-          .getElementById("spotlight")
-          .style.setProperty("--x", e.clientX + "px");
-        document
-          .getElementById("spotlight")
-          .style.setProperty("--y", e.clientY + "px");
-      });
-
-      window.onscroll = () => {
-        document.querySelectorAll(".reveal").forEach((el) => {
-          if (el.getBoundingClientRect().top < window.innerHeight - 50)
-            el.classList.add("active");
+        document.addEventListener('mousemove', e => {
+            document.getElementById('spotlight').style.setProperty('--x', e.clientX + 'px');
+            document.getElementById('spotlight').style.setProperty('--y', e.clientY + 'px');
         });
-      };
 
-      const term = document.getElementById("term");
-      term.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-          document.getElementById("output").innerHTML =
-            "> Initializing mail client...";
-          setTimeout(() => {
-            window.location.href = `mailto:nehapatil26102002@gmail.com?body=${encodeURIComponent(term.value)}`;
-            term.value = "";
-          }, 1000);
-        }
-      });
+        window.onscroll = () => {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
+            });
+        };
     </script>
-  </body>
+</body>
 </html>
+
