@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neha Patil | Software Developer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div class="loader-wrapper" id="loader">
+      <div class="loader">
+        <div class="loader-inner">
+          <div class="loader-line"></div>
+          <div class="loader-line"></div>
+          <div class="loader-line"></div>
+          <div class="loader-line"></div>
+        </div>
+        <div class="loader-text">
+          <span class="loader-name">NEHA PATIL</span>
+          <span class="loader-role">Loading Portfolio...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Particle Background -->
+    <canvas id="particles"></canvas>
+    
+    <!-- Spotlight Effect -->
+    <div id="spotlight"></div>
+    
+    <!-- Floating Action Buttons -->
+    <div class="fab-container">
+      <button class="fab" id="themeToggle" title="Toggle Theme">
+        <span>🌙</span>
+      </button>
+      <button class="fab" id="musicToggle" title="Toggle Music" style="display: none;">
+        <span>🎵</span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="top-nav" id="topNav">
+      <a href="https://github.com/NehaPatil2610" target="_blank" class="nav-link github-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+        </svg>
+        <span>GitHub</span>
+      </a>
+      <a
+        href="https://www.linkedin.com/in/neha-patil-aba7632b4"
+        target="_blank"
+        class="nav-link linkedin-link"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+        <span>LinkedIn</span>
+      </a>
+    </nav>
+
+    <div class="container">
+      <!-- Sidebar with 3D Profile -->
+      <aside class="sidebar">
+        <div class="profile-3d">
+          <div class="profile-card-3d">
+            <div class="profile-glow"></div>
+            <h1 class="name-animate">Neha Patil</h1>
+            <div class="role">
+              <span class="role-text" id="typing-text"></span>
+              <span class="cursor-blink">|</span>
+            </div>
+            <p class="about-text">
+              I'm a passionate
+              <span class="highlight">Software Developer</span> focused on building
+              clean, efficient, and user-friendly applications. I enjoy solving
+              real-world problems through code and continuously improving my skills.
+              <span class="motive"
+                >Consistency, curiosity, and learning drive everything I
+                build.</span
+              >
+            </p>
+
+            <div class="social-btns">
+              <a
+                href="mailto:nehapatil26102002@gmail.com?subject=Portfolio%20Contact"
+                class="btn primary"
+                id="emailBtn"
+              >
+                <span>Email Me</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M2.5 5L10 10L17.5 5M2.5 15H17.5V5H2.5V15Z" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </a>
+              <div class="btn-group">
+                <a
+                  href="./nehaResume1.pdf"
+                  target="_blank"
+                  class="btn secondary"
+                  id="viewCvBtn"
+                >
+                  <span>View CV</span>
+                </a>
+                <a
+                  href="./nehaResume1.pdf"
+                  download="Neha_Patil_Resume.pdf"
+                  class="btn secondary"
+                  id="downloadCvBtn"
+                >
+                  <span>Download CV</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Skills Tags with 3D effect -->
+            <div class="skills-preview">
+              <div class="skill-tag-3d">React</div>
+              <div class="skill-tag-3d">Node.js</div>
+              <div class="skill-tag-3d">MongoDB</div>
+              <div class="skill-tag-3d">JavaScript</div>
+              <div class="skill-tag-3d">Express</div>
+              <div class="skill-tag-3d">Java</div>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="contact-info reveal">
+              <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div class="contact-details">
+                  <div class="contact-label">Email</div>
+                  <a href="mailto:nehapatil26102002@gmail.com" class="contact-value">nehapatil26102002@gmail.com</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">📱</div>
+                <div class="contact-details">
+                  <div class="contact-label">Mobile</div>
+                  <a href="tel:+918262882037" class="contact-value">+91 8262882037</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="content">
+        <!-- Projects Section -->
+        <section id="projects">
+          <div class="cyber-header">
+            <div class="status-dot"></div>
+            <h3>Deployed_Projects</h3>
+            <div class="line"></div>
+          </div>
+
+          <div class="projects-grid">
+            <div class="project-card-3d reveal">
+              <div class="card-inner">
+                <div class="card-front">
+                  <div class="project-header">
+                    <div class="project-icon">🚀</div>
+                    <div class="project-status">LIVE</div>
+                  </div>
+                  <h4>Forum Flow</h4>
+                  <p>
+                    A dynamic student discussion portal designed to bridge
+                    communication gaps. Developed a secure environment for real-time
+                    exchange and resource sharing.
+                  </p>
+                  <div class="project-features">
+                    <span class="feature-badge">JWT Auth</span>
+                    <span class="feature-badge">Multer</span>
+                    <span class="feature-badge">Real-time</span>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <h5>Technical Details</h5>
+                  <ul>
+                    <li>Integrated <strong>JWT (JSON Web Tokens)</strong> for robust authentication</li>
+                    <li>Optimized file processing using <strong>Multer</strong> for seamless document uploads</li>
+                    <li>Real-time communication features</li>
+                    <li>Secure data privacy implementation</li>
+                  </ul>
+                  <div class="tech-list">
+                    <span class="tag">MERN Stack</span>
+                    <span class="tag">JWT Auth</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">MongoDB</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card-3d reveal">
+              <div class="card-inner">
+                <div class="card-front">
+                  <div class="project-header">
+                    <div class="project-icon">🎬</div>
+                    <div class="project-status">LIVE</div>
+                  </div>
+                  <h4>FlickFinder</h4>
+                  <p>
+                    An intuitive movie discovery engine that aggregates global
+                    cinematic data. Focuses on speed, responsiveness, and clean UI/UX.
+                  </p>
+                  <div class="project-features">
+                    <span class="feature-badge">TMDB API</span>
+                    <span class="feature-badge">React Hooks</span>
+                    <span class="feature-badge">Responsive</span>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <h5>Technical Details</h5>
+                  <ul>
+                    <li>Leveraged <strong>TMDB REST API</strong> to fetch real-time metadata</li>
+                    <li>Built with <strong>React Hooks</strong> for ultra-responsive state management</li>
+                    <li>Live filtering and search capabilities</li>
+                    <li>Modern UI with Tailwind CSS</li>
+                  </ul>
+                  <div class="tech-list">
+                    <span class="tag">React.js</span>
+                    <span class="tag">REST API</span>
+                    <span class="tag">Tailwind CSS</span>
+                    <span class="tag">Hooks</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" style="margin-top: 80px">
+          <div class="cyber-header">
+            <div class="status-dot"></div>
+            <h3>Technical_Skills</h3>
+            <div class="line"></div>
+          </div>
+
+          <div class="skills-showcase reveal">
+            <div class="skill-orbital-container">
+              <!-- Center Skill -->
+              <div class="skill-orbital-center">
+                <div class="skill-icon-large">💻</div>
+                <div class="skill-center-label">Tech Stack</div>
+              </div>
+              
+              <!-- Orbital Skills -->
+              <div class="skill-orbital-item" data-skill="JavaScript" data-level="95" data-icon="⚡">
+                <div class="skill-orbital-card">
+                  <div class="skill-orbital-icon">⚡</div>
+                  <div class="skill-orbital-name">JavaScript</div>
+                  <div class="skill-orbital-level">95%</div>
+                  <div class="skill-orbital-ring">
+                    <svg class="skill-ring-svg">
+                      <circle class="skill-ring-bg" cx="50" cy="50" r="45"></circle>
+                      <circle class="skill-ring-progress" cx="50" cy="50" r="45" data-progress="95"></circle>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-orbital-item" data-skill="React.js" data-level="90" data-icon="⚛️">
+                <div class="skill-orbital-card">
+                  <div class="skill-orbital-icon">⚛️</div>
+                  <div class="skill-orbital-name">React.js</div>
+                  <div class="skill-orbital-level">90%</div>
+                  <div class="skill-orbital-ring">
+                    <svg class="skill-ring-svg">
+                      <circle class="skill-ring-bg" cx="50" cy="50" r="45"></circle>
+                      <circle class="skill-ring-progress" cx="50" cy="50" r="45" data-progress="90"></circle>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-orbital-item" data-skill="Node.js" data-level="85" data-icon="🟢">
+                <div class="skill-orbital-card">
+                  <div class="skill-orbital-icon">🟢</div>
+                  <div class="skill-orbital-name">Node.js</div>
+                  <div class="skill-orbital-level">85%</div>
+                  <div class="skill-orbital-ring">
+                    <svg class="skill-ring-svg">
+                      <circle class="skill-ring-bg" cx="50" cy="50" r="45"></circle>
+                      <circle class="skill-ring-progress" cx="50" cy="50" r="45" data-progress="85"></circle>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-orbital-item" data-skill="Java" data-level="80" data-icon="☕">
+                <div class="skill-orbital-card">
+                  <div class="skill-orbital-icon">☕</div>
+                  <div class="skill-orbital-name">Java</div>
+                  <div class="skill-orbital-level">80%</div>
+                  <div class="skill-orbital-ring">
+                    <svg class="skill-ring-svg">
+                      <circle class="skill-ring-bg" cx="50" cy="50" r="45"></circle>
+                      <circle class="skill-ring-progress" cx="50" cy="50" r="45" data-progress="80"></circle>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-orbital-item" data-skill="MongoDB" data-level="85" data-icon="🍃">
+                <div class="skill-orbital-card">
+                  <div class="skill-orbital-icon">🍃</div>
+                  <div class="skill-orbital-name">MongoDB</div>
+                  <div class="skill-orbital-level">85%</div>
+                  <div class="skill-orbital-ring">
+                    <svg class="skill-ring-svg">
+                      <circle class="skill-ring-bg" cx="50" cy="50" r="45"></circle>
+                      <circle class="skill-ring-progress" cx="50" cy="50" r="45" data-progress="85"></circle>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-orbital-item" data-skill="SQL" data-level="85" data-icon="🗄️">
+                <div class="skill-orbital-card">
+                  <div class="skill-orbital-icon">🗄️</div>
+                  <div class="skill-orbital-name">SQL</div>
+                  <div class="skill-orbital-level">85%</div>
+                  <div class="skill-orbital-ring">
+                    <svg class="skill-ring-svg">
+                      <circle class="skill-ring-bg" cx="50" cy="50" r="45"></circle>
+                      <circle class="skill-ring-progress" cx="50" cy="50" r="45" data-progress="85"></circle>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-orbital-item" data-skill="Express.js" data-level="85" data-icon="🚀">
+                <div class="skill-orbital-card">
+                  <div class="skill-orbital-icon">🚀</div>
+                  <div class="skill-orbital-name">Express.js</div>
+                  <div class="skill-orbital-level">85%</div>
+                  <div class="skill-orbital-ring">
+                    <svg class="skill-ring-svg">
+                      <circle class="skill-ring-bg" cx="50" cy="50" r="45"></circle>
+                      <circle class="skill-ring-progress" cx="50" cy="50" r="45" data-progress="85"></circle>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="skill-orbital-item" data-skill="HTML/CSS" data-level="90" data-icon="🎨">
+                <div class="skill-orbital-card">
+                  <div class="skill-orbital-icon">🎨</div>
+                  <div class="skill-orbital-name">HTML/CSS</div>
+                  <div class="skill-orbital-level">90%</div>
+                  <div class="skill-orbital-ring">
+                    <svg class="skill-ring-svg">
+                      <circle class="skill-ring-bg" cx="50" cy="50" r="45"></circle>
+                      <circle class="skill-ring-progress" cx="50" cy="50" r="45" data-progress="90"></circle>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" style="margin-top: 80px">
+          <div class="cyber-header">
+            <div class="status-dot"></div>
+            <h3>Academic_Profile</h3>
+            <div class="line"></div>
+          </div>
+
+          <div class="edu-flex">
+            <div class="edu-item-3d reveal">
+              <div class="edu-glow"></div>
+              <div class="edu-content">
+                <div class="edu-icon">🎓</div>
+                <h5>Master of Computer Application (MCA)</h5>
+                <div class="edu-cgpa">
+                  <span class="cgpa-label">CGPA</span>
+                  <span class="cgpa-value">8.81</span>
+                </div>
+                <p class="edu-institution">K.B Joshi Institute of IT, Pune</p>
+                <div class="edu-year">2022 - 2024</div>
+              </div>
+            </div>
+            <div class="edu-item-3d reveal">
+              <div class="edu-glow"></div>
+              <div class="edu-content">
+                <div class="edu-icon">📚</div>
+                <h5>BBA (Computer Application)</h5>
+                <div class="edu-cgpa">
+                  <span class="cgpa-label">CGPA</span>
+                  <span class="cgpa-value">7.86</span>
+                </div>
+                <p class="edu-institution">K.K Wagh Arts, Science & Commerce College, Nashik</p>
+                <div class="edu-year">2019 - 2022</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" style="margin-top: 100px">
+          <div class="cyber-header">
+            <div class="status-dot"></div>
+            <h3>Direct_Command</h3>
+            <div class="line"></div>
+          </div>
+
+          <div class="console-3d glow-card reveal">
+            <div class="console-header">
+              <div class="console-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="console-title">terminal.exe</div>
+            </div>
+            <div class="console-body">
+              <div class="console-comment">// Send me a secure signal...</div>
+              <div class="console-input-line">
+                <span class="console-prompt">visitor@neha:~$ </span>
+                <input
+                  type="text"
+                  id="term"
+                  placeholder="type hello..."
+                  autocomplete="off"
+                />
+              </div>
+              <div id="output" class="console-output"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="thank-you reveal">
+          <div class="cyber-header">
+            <div class="status-dot"></div>
+            <h3>End_Of_Line</h3>
+            <div class="line"></div>
+          </div>
+          <p class="thank-you-text">
+            "Thank you for visiting! I'm always open to discussing new
+            opportunities or creative collaborations. Let's build something
+            amazing together."
+          </p>
+          <button class="back-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <span>[ RETURN_TO_START ]</span>
+          </button>
+          <div class="footer-copyright">
+            NEHA PATIL // 2026 // ALL_RIGHTS_RESERVED
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
