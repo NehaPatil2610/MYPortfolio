@@ -1,0 +1,57 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // ✅ Best for any environment — opens index.html directly (no server needed)
+            "name": "Open index.html (No Server)",
+            "request": "launch",
+            "type": "chrome",
+            "file": "${workspaceFolder}/index.html",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            // ✅ Use when running Live Server or any local dev server (default port 5500)
+            "name": "Launch Chrome (Live Server)",
+            "request": "launch",
+            "type": "chrome",
+            "url": "http://localhost:${input:port}",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            // ✅ Same as above but for Edge users
+            "name": "Launch Edge (Live Server)",
+            "request": "launch",
+            "type": "msedge",
+            "url": "http://localhost:${input:port}",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            // ✅ Attach to an already-running Chrome DevTools session
+            "name": "Attach to Chrome",
+            "request": "attach",
+            "type": "chrome",
+            "port": 9222,
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            // ✅ Attach to an already-running Edge DevTools session
+            "name": "Attach to Edge",
+            "request": "attach",
+            "type": "msedge",
+            "port": 9222,
+            "webRoot": "${workspaceFolder}"
+        }
+    ],
+    "inputs": [
+        {
+            // Prompts for port number when launching against a local server
+            "id": "port",
+            "type": "promptString",
+            "description": "Enter the local server port (e.g. 5500 for Live Server, 8080 for http-server)",
+            "default": "5500"
+        }
+    ]
+}
