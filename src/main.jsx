@@ -76,7 +76,7 @@ const LoadingFallback = () => (
       letterSpacing: '0.15em',
     }}
   >
-    Loading…
+    Loading Solar System...
   </div>
 );
 
