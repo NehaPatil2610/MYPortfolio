@@ -1,0 +1,232 @@
+/* ═══════════════════════════════════════════════════════
+   SOLAR PORTFOLIO — Global Styles
+   ═══════════════════════════════════════════════════════ */
+
+/* Force total transparency on all root containers */
+:root,
+html,
+body,
+#root {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base typography & defaults */
+:root,
+html,
+body,
+#root {
+  color-scheme: dark;
+  @apply text-slate-100 font-sans antialiased min-h-screen;
+  overflow-x: hidden;
+}
+
+/* Light mode body background — subtle warm tint */
+body.light-mode {
+  background: linear-gradient(135deg, #fdf8ef 0%, #f5efe0 50%, #fef9f0 100%) !important;
+}
+
+/* Dark mode body background — deep charcoal */
+body:not(.light-mode) {
+  background: linear-gradient(135deg, #050505 0%, #0a0a0a 50%, #080808 100%) !important;
+}
+
+/* ─── Metallic Gold Theme ─── */
+:root {
+  --gold-primary: #D4AF37;
+  --gold-glow: rgba(212, 175, 55, 0.4);
+  --gold-champagne: #F1E5AC;
+}
+
+::selection {
+  background: rgba(212, 175, 55, 0.25);
+  color: #fefce8;
+}
+
+/* ─── Custom scrollbars ─── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #D4AF37, #B8860B);
+  border-radius: 999px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SOLAR-GLASS CARD SYSTEM
+   ═══════════════════════════════════════════════════════ */
+
+.solar-glass-dark {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(212, 175, 55, 0.08) inset;
+}
+
+.solar-glass-light {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(212, 175, 55, 0.1) inset;
+}
+
+/* Shimmer border on hover */
+@keyframes shimmer-border {
+  0%   { border-color: rgba(212,175,55,0.15); box-shadow: 0 0 0 0 rgba(212,175,55,0); }
+  50%  { border-color: rgba(212,175,55,0.5);  box-shadow: 0 0 25px rgba(212,175,55,0.15); }
+  100% { border-color: rgba(212,175,55,0.15); box-shadow: 0 0 0 0 rgba(212,175,55,0); }
+}
+.solar-glass-dark:hover,
+.solar-glass-light:hover {
+  animation: shimmer-border 2s ease-in-out infinite;
+}
+
+/* ─── Gradient text helper ─── */
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] via-[#F1E5AC] to-[#B8860B];
+}
+
+/* ─── Border Beam Animation ─── */
+@keyframes border-beam {
+  0%   { offset-distance: 0%;   opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+.border-beam-container { position: relative; overflow: hidden; }
+.border-beam {
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.border-beam::after {
+  content: "";
+  position: absolute;
+  aspect-ratio: 1;
+  width: 100px;
+  background: linear-gradient(to right, #D4AF37, #F1E5AC, transparent);
+  offset-path: rect(0 auto auto 0 round 24px);
+  animation: border-beam 4s infinite linear;
+}
+
+/* ─── Color-coded glow shadows ─── */
+.shadow-gold-glow:hover {
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+}
+
+/* ─── Pulse Badge ─── */
+.pulse-badge { @apply relative flex h-2 w-2 mr-2; }
+.pulse-badge-inner { @apply animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75; }
+.pulse-badge-dot   { @apply relative inline-flex rounded-full h-2 w-2 bg-emerald-500; }
+
+/* ─── Ripple Effect ─── */
+.ripple-effect {
+  position: fixed;
+  border-radius: 50%;
+  transform: scale(0);
+  background: rgba(212, 175, 55, 0.3);
+  animation: ripple-animation 0.6s ease-out;
+  pointer-events: none;
+  z-index: 9999;
+}
+@keyframes ripple-animation {
+  from { transform: scale(0); opacity: 0.8; }
+  to   { transform: scale(4); opacity: 0; }
+}
+
+/* ─── Copy Email Gold Bloom on Hover ─── */
+.email-btn-gold-bloom:hover {
+  background: linear-gradient(135deg, #D4AF37, #F1E5AC, #D4AF37) !important;
+  color: #000 !important;
+  border-color: #D4AF37 !important;
+  box-shadow:
+    0 0 20px rgba(212,175,55,0.5),
+    0 0 40px rgba(212,175,55,0.3),
+    0 0 60px rgba(212,175,55,0.15) !important;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SOLAR-RESPONSIVE CARD GLOW (all cards)
+   ═══════════════════════════════════════════════════════ */
+.solar-card-glow {
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.solar-card-glow:hover {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+/* ═══════════════════════════════════════════════════════
+   EDUCATION CARD — extra hover glow
+   ═══════════════════════════════════════════════════════ */
+.education-card {
+  transition: box-shadow 0.45s ease, transform 0.35s ease, border-color 0.45s ease;
+}
+.education-card:hover {
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.2), 0 8px 32px rgba(0,0,0,0.25);
+  border-color: rgba(212, 175, 55, 0.55);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SHIMMER BUTTON ANIMATION ("Sun-Catcher" CV button)
+   ═══════════════════════════════════════════════════════ */
+@keyframes shimmer-sweep {
+  0%   { transform: translateX(-120%) skewX(-20deg); opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { opacity: 0.6; }
+  100% { transform: translateX(250%) skewX(-20deg); opacity: 0; }
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255,255,255,0.45) 50%,
+    transparent 70%
+  );
+  animation: shimmer-sweep 3s ease-in-out infinite;
+}
+
+/* ─── Light mode specific tagging ─── */
+.light-skill-tag {
+  @apply bg-gray-200 text-gray-800 border-gray-300;
+}
+
+/* ═══════════════════════════════════════════════════════
+   CSS SUN — Mobile responsiveness
+   Center the sun at the bottom on small screens
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .css-sun-primary {
+    right: 50% !important;
+    transform: translateX(50%);
+    bottom: -18% !important;
+  }
+  .css-sun-haze {
+    right: 50% !important;
+    transform: translateX(50%);
+    bottom: -30% !important;
+  }
+}
+

@@ -134,7 +134,7 @@ function initScrollReveal() {
 
 // 3D Card Tilt Effect
 function init3DCards() {
-  const cards = document.querySelectorAll('.project-card-3d, .edu-item-3d, .profile-card-3d');
+  const cards = document.querySelectorAll('.edu-item-3d, .profile-card-3d');
   
   cards.forEach(card => {
     if (window.innerWidth <= 768) return; // Disable on mobile
@@ -189,8 +189,18 @@ function initConsole() {
   
   const commands = {
     hello: () => "> Hello! Nice to meet you. Type 'help' for commands.",
-    help: () => "> Available commands: hello, about, contact, clear",
+    help: () => "> Available commands: hello, about, projects, contact, clear",
     about: () => "> I'm a Software Developer passionate about building amazing applications.",
+    projects: () => {
+      output.innerHTML = "> Navigating to deployed projects...";
+      setTimeout(() => {
+        const section = document.getElementById('projects');
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 400);
+      return "";
+    },
     contact: () => {
       output.innerHTML = "> Opening mail client...";
       setTimeout(() => {
