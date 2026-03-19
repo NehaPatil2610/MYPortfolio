@@ -137,7 +137,7 @@ const Hero = ({ onViewWork, theme }) => {
               <a
                 href="/Neha_Patil_Resume.pdf"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className={`magnetic-target inline-flex items-center gap-2 rounded-full border px-7 py-3.5 text-sm font-bold backdrop-blur-md transition-all hover:scale-105 active:scale-95 ${
                   theme === 'light'
                     ? 'border-slate-400/40 bg-white/20 text-slate-800 hover:border-[#D4AF37]/60 hover:text-[#D4AF37]'
@@ -151,7 +151,7 @@ const Hero = ({ onViewWork, theme }) => {
               {/* Download CV — Sun-Catcher shimmer button */}
               <a
                 href="/Neha_Patil_Resume.pdf"
-                download
+                download="Neha_Patil_Resume.pdf"
                 className="btn-shimmer magnetic-target inline-flex items-center gap-2 rounded-full bg-[#D4AF37] px-7 py-3.5 text-sm font-bold text-black shadow-[0_4px_18px_rgba(212,175,55,0.45)] transition-all hover:scale-105 hover:shadow-[0_6px_28px_rgba(212,175,55,0.6)] active:scale-95"
               >
                 <Download className="w-4 h-4" />

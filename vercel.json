@@ -1,5 +1,8 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/((?!Neha_Patil_Resume.pdf).*)",
+      "destination": "/index.html"
+    }
   ]
 }
