@@ -410,53 +410,55 @@ function App() {
   };
 
   return (
-    <LenisProvider>
-      <MagneticCursor />
-      <RippleEffect />
-      <ScrollProgressBar />
-      <MouseTrail />
-      <SolarBackground theme={theme} />
-      <main
-        id="home"
-        className={`relative z-10 min-h-screen transition-colors duration-500 ${
-          theme === 'dark' ? 'bg-black/20' : 'bg-white/10'
-        }`}
-      >
-        <SocialNav theme={theme} onToggleTheme={toggleTheme} />
-        <div className="pt-20 sm:pt-24">
-          <Hero onViewWork={handleViewWork} theme={theme} />
-          
-          <section id="skills" className="relative py-16 sm:py-24">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#D4AF37] to-[#B8860B] bg-clip-text text-transparent">
-                  Technical Skills
-                </h2>
-                <div className="h-[2px] w-[80px] bg-gradient-to-r from-[#D4AF37] to-transparent mt-4 rounded-full" />
+    <div className="relative z-10">
+      <LenisProvider>
+        <MagneticCursor />
+        <RippleEffect />
+        <ScrollProgressBar />
+        <MouseTrail />
+        <SolarBackground theme={theme} />
+        <main
+          id="home"
+          className={`relative z-10 min-h-screen transition-colors duration-500 ${
+            theme === 'dark' ? 'bg-black/20' : 'bg-white/10'
+          }`}
+        >
+          <SocialNav theme={theme} onToggleTheme={toggleTheme} />
+          <div className="pt-20 sm:pt-24">
+            <Hero onViewWork={handleViewWork} theme={theme} />
+            
+            <section id="skills" className="relative py-16 sm:py-24">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="mb-12">
+                  <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#D4AF37] to-[#B8860B] bg-clip-text text-transparent">
+                    Technical Skills
+                  </h2>
+                  <div className="h-[2px] w-[80px] bg-gradient-to-r from-[#D4AF37] to-transparent mt-4 rounded-full" />
+                </div>
+                <BentoSkills theme={theme} />
               </div>
-              <BentoSkills theme={theme} />
-            </div>
-          </section>
+            </section>
 
-          {/* ── Education (between Skills and Projects) ── */}
-          <Education theme={theme} />
+            {/* ── Education (between Skills and Projects) ── */}
+            <Education theme={theme} />
 
-          <section id="projects" className="relative py-16 sm:py-24">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#D4AF37] to-[#B8860B] bg-clip-text text-transparent">
-                  Selected Work
-                </h2>
-                <div className="h-[2px] w-[80px] bg-gradient-to-r from-[#D4AF37] to-transparent mt-4 rounded-full" />
+            <section id="projects" className="relative py-16 sm:py-24">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="mb-12">
+                  <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#D4AF37] to-[#B8860B] bg-clip-text text-transparent">
+                    Selected Work
+                  </h2>
+                  <div className="h-[2px] w-[80px] bg-gradient-to-r from-[#D4AF37] to-transparent mt-4 rounded-full" />
+                </div>
+                <ProjectsGrid theme={theme} />
               </div>
-              <ProjectsGrid theme={theme} />
-            </div>
-          </section>
+            </section>
 
-          <FinalSection theme={theme} />
-        </div>
-      </main>
-    </LenisProvider>
+            <FinalSection theme={theme} />
+          </div>
+        </main>
+      </LenisProvider>
+    </div>
   );
 }
 

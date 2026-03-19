@@ -117,7 +117,7 @@ export default function SolarBackground({ theme }) {
         }}
         camera={{ position: [0, 0, 5], fov: 45 }}
         dpr={[1, 1.5]}
-        style={{ position: 'absolute', inset: 0 }}
+        style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, pointerEvents: 'none' }}
         onCreated={({ gl }) => {
           gl.setClearColor(0x000000, 0);
           gl.toneMapping = THREE.ACESFilmicToneMapping;
