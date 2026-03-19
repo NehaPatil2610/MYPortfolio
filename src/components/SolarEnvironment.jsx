@@ -1,6 +1,8 @@
-import React, { useRef, useMemo, useEffect } from 'react';
+import React, { useRef, useMemo, useEffect, useState } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
+import { EffectComposer, GodRays, Bloom } from '@react-three/postprocessing';
+import { BlendFunction } from 'postprocessing';
 
 /* ═══════════════════════════════════════════════════════
    GOD RAYS — Custom fullscreen shader, GPU-safe
@@ -285,5 +287,70 @@ export function GoldenDust({ theme }) {
         blending={THREE.AdditiveBlending}
       />
     </points>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════
+   SUN WITH GOD RAYS (postprocessing)
+   Implements a null check to avoid crashes on slow load
+   ═══════════════════════════════════════════════════════ */
+export function SunWithGodRays({ theme }) {
+  const sunRef = useRef(null);
+  const [ready, setReady] = useState(false);
+  
+  useEffect(() => {
+    // Ensure we trigger a re-render after the mesh ref is attached
+    setReady(true);
+  }, []);
+
+  const { viewport } = useThree();
+  const isMobile = viewport.width < 6;
+
+  const sunPos = useMemo(() => {
+    return isMobile
+      ? [0, -viewport.height / 2, -3.5]
+      : [viewport.width / 2, -viewport.height / 2, -3.5];
+  }, [viewport.width, viewport.height, isMobile]);
+
+  return (
+    <>
+      <mesh
+        ref={sunRef}
+        position={sunPos}
+      >
+        <sphereGeometry args={[1, 32, 32]} />
+        {/* Make the sphere material basically invisible so it doesn't show a hard edge, 
+            but GodRays still use it to occlude and generate rays */}
+        <meshBasicMaterial color={theme === 'dark' ? '#D4AF37' : '#FFD700'} transparent opacity={0.01} />
+      </mesh>
+
+      {sunRef.current && (
+        <EffectComposer disableNormalPass>
+          <GodRays
+            sun={sunRef.current}
+            blendFunction={BlendFunction.SCREEN}
+            samples={60}
+            density={0.96}
+            decay={0.9}
+            weight={0.4}
+            exposure={0.6}
+            clampMax={1}
+            width={isMobile ? 360 : 720}
+            height={isMobile ? 360 : 720}
+            kernelSize={5}
+            blur={true}
+          />
+          <Bloom
+            blendFunction={BlendFunction.ADD}
+            intensity={theme === 'dark' ? 1.5 : 2.5}
+            width={isMobile ? 360 : 720}
+            height={isMobile ? 360 : 720}
+            kernelSize={5}
+            luminanceThreshold={0.1}
+            luminanceSmoothing={0.9}
+          />
+        </EffectComposer>
+      )}
+    </>
   );
 }

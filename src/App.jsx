@@ -9,6 +9,31 @@ import LenisProvider from './components/LenisProvider.jsx';
 import SolarBackground from './components/SolarBackground.jsx';
 import MouseTrail from './components/MouseTrail.jsx';
 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+  componentDidCatch(error, errorInfo) {
+    console.error("Canvas Error:", error, errorInfo);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ position: 'fixed', top: '50px', left: '10px', zIndex: 9999, color: 'red', background: 'black', padding: '10px' }}>
+          <h2>WebGL Crash</h2>
+          <pre style={{ fontSize: '10px' }}>{this.state.error?.toString()}</pre>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+
 const RippleEffect = () => {
   React.useEffect(() => {
     const handleClick = (e) => {
@@ -389,6 +414,11 @@ function EmailButton({ theme }) {
 
 function App() {
   const [theme, setTheme] = React.useState('dark');
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setTimeout(() => setMounted(true), 100);
+  }, []);
 
   React.useEffect(() => {
     if (theme === 'light') {
@@ -416,7 +446,9 @@ function App() {
         <RippleEffect />
         <ScrollProgressBar />
         <MouseTrail />
-        <SolarBackground theme={theme} />
+        <ErrorBoundary>
+          {mounted && <SolarBackground theme={theme} />}
+        </ErrorBoundary>
         <main
           id="home"
           className={`relative z-10 min-h-screen transition-colors duration-500 ${

@@ -11,6 +11,19 @@
     />
   </head>
   <body class="text-slate-100">
+    <div id="error-log" style="position:fixed;top:0;left:0;z-index:999999;color:white;background:red;font-family:monospace;padding:10px;display:none;width:100%;"></div>
+    <script>
+      window.addEventListener('error', function(event) {
+        var el = document.getElementById('error-log');
+        el.style.display = 'block';
+        el.innerText += '\n' + event.message + '\n' + (event.error ? event.error.stack : '');
+      });
+      window.addEventListener('unhandledrejection', function(event) {
+        var el = document.getElementById('error-log');
+        el.style.display = 'block';
+        el.innerText += '\nUnhandled Promise: ' + event.reason;
+      });
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

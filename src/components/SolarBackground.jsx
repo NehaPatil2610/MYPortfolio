@@ -1,7 +1,7 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
-import { GoldenDust, GodRaysShader, BloomGlow, AtmosphericMist } from './SolarEnvironment';
+import { GoldenDust, AtmosphericMist, SunWithGodRays } from './SolarEnvironment';
 
 /* ═══════════════════════════════════════════════════════
    CSS VOLUMETRIC SUN — Pure DOM, no sphere-edge artifacts.
@@ -90,10 +90,8 @@ function SolarScene({ theme }) {
       <pointLight position={[5, -5, 0]} intensity={0.3} color="#D4AF37" distance={30} />
       {/* Atmospheric mist — gives light something to "hit" */}
       <AtmosphericMist theme={theme} />
-      {/* Bloom glow shader (bleeding light) */}
-      <BloomGlow theme={theme} />
-      {/* God Rays — champagne beams */}
-      <GodRaysShader theme={theme} />
+      {/* Real Sun Mesh with Postprocessing GodRays and Bloom */}
+      <SunWithGodRays theme={theme} />
       {/* Floating golden dust */}
       <GoldenDust theme={theme} />
     </>
@@ -101,13 +99,17 @@ function SolarScene({ theme }) {
 }
 
 export default function SolarBackground({ theme }) {
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
+
   return (
     <div className="fixed inset-0 pointer-events-none" style={{ zIndex: -1 }}>
       {/* CSS sun — perfectly smooth, no artifacts */}
       <CssSun theme={theme} />
 
       {/* Three.js canvas — rays, bloom, fog, particles */}
-      <Canvas
+      {ready ? (
+        <Canvas
         gl={{
           alpha: true,
           antialias: true,
@@ -117,7 +119,7 @@ export default function SolarBackground({ theme }) {
         }}
         camera={{ position: [0, 0, 5], fov: 45 }}
         dpr={[1, 1.5]}
-        style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1, pointerEvents: 'none' }}
+        style={{ position: 'fixed', zIndex: -1, top: 0, left: 0, width: '100vw', height: '100vh', pointerEvents: 'none' }}
         onCreated={({ gl }) => {
           gl.setClearColor(0x000000, 0);
           gl.toneMapping = THREE.ACESFilmicToneMapping;
@@ -128,6 +130,7 @@ export default function SolarBackground({ theme }) {
           <SolarScene theme={theme} />
         </Suspense>
       </Canvas>
+      ) : null}
     </div>
   );
 }
